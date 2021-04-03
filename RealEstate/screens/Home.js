@@ -5,6 +5,7 @@ import {
   Text,
   SafeAreaView,
   ImageBackground,
+  Image,
 } from 'react-native';
 import realEstate from '../data/realEstate.json';
 import styles from '../styles/styles';
@@ -20,22 +21,48 @@ export default function HomeScreen() {
               style={styles.image}
               imageStyle={{borderRadius: 10}}>
               <View style={styles.score}>
+                <Image
+                  style={styles.starIcon}
+                  source={require('../assets/icons/star.png')}
+                />
                 <Text style={styles.text}>{item.score}</Text>
               </View>
             </ImageBackground>
           </View>
           <View style={styles.listData}>
-            <Text style={styles.item}>{item.name}</Text>
+            <Text style={styles.nameEstate}>{item.name}</Text>
             <View style={styles.infoAddress}>
-              <Text>{item.address}</Text>
+              <Image
+                style={styles.tinyLogo}
+                source={require('../assets/icons/pin.png')}
+              />
+              <Text style={styles.address}>{item.address}</Text>
             </View>
             <View style={styles.infoBBSF}>
-              <Text>{item.bedrooms}</Text>
-              <Text>{item.bathrooms}</Text>
-              <Text>{item.squareFootage}</Text>
+              <View style={styles.containerBBSF}>
+                <Image
+                  style={styles.tinyLogo}
+                  source={require('../assets/icons/bed.png')}
+                />
+                <Text style={styles.inTitle}>{item.bedrooms}</Text>
+              </View>
+              <View style={styles.containerBBSF}>
+                <Image
+                  style={styles.tinyLogo}
+                  source={require('../assets/icons/bathtub.png')}
+                />
+                <Text style={styles.inTitle}>{item.bathrooms}</Text>
+              </View>
+              <View style={styles.containerBBSF}>
+                <Image
+                  style={styles.tinyLogo}
+                  source={require('../assets/icons/blueprint.png')}
+                />
+                <Text style={styles.inTitle}>{item.squareFootage}</Text>
+              </View>
             </View>
             <View style={styles.infoPL}>
-              <Text>{item.price}</Text>
+              <Text style={styles.price}>${item.price}/m</Text>
               <Text>{item.like}</Text>
             </View>
           </View>
@@ -51,6 +78,7 @@ export default function HomeScreen() {
           data={realEstate}
           renderItem={estateView}
           keyExtractor={(item, index) => index}
+          showsVerticalScrollIndicator={false}
         />
       </View>
     </SafeAreaView>
