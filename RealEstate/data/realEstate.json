@@ -3,7 +3,7 @@
     "id": 1,
     "name": "Brick Lane Realty",
     "address":"6907 Twin Lake Dr",
-    "bedrooms":3,
+    "bedrooms": 3,
     "bathrooms":3,
     "squareFootage":1352,
     "price":1195,
