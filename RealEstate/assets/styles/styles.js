@@ -22,6 +22,9 @@ export default StyleSheet.create({
     height: 110,
     width: 110,
   },
+  imageBorder: {
+    borderRadius: 10,
+  },
   score: {
     backgroundColor: '#FBEDB7',
     marginBottom: 7,
