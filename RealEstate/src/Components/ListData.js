@@ -1,11 +1,16 @@
-import React from 'react';
-import {View, Text, Image} from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, Image, TouchableHighlight} from 'react-native';
 import styles from '../../assets/styles/styles';
 import ListBBSF from './ListBBSF';
 
 const ListData = ({item}) => {
   const stylesBBSF = [styles.containerBBSF, styles.iconsBBSF, styles.inTitle];
   const stylesAddr = [styles.infoAddress, styles.logoLocation, styles.address];
+  const [stateLike, setLike] = useState(item.like);
+  const statusChange = () => {
+    item.like = !stateLike;
+    setLike(!stateLike);
+  };
   return (
     <View style={styles.listData}>
       <Text style={styles.nameEstate}>{item.name}</Text>
@@ -34,10 +39,16 @@ const ListData = ({item}) => {
       </View>
       <View style={styles.infoPL}>
         <Text style={styles.price}>${item.price}/m</Text>
-        <Image
-          style={styles.iconHeart}
-          source={require('../../assets/icons/heart.png')}
-        />
+        <TouchableHighlight underlayColor="transparent" onPress={statusChange}>
+          <Image
+            style={styles.iconHeart}
+            source={
+              stateLike
+                ? require('../../assets/icons/heart-like.png')
+                : require('../../assets/icons/heart.png')
+            }
+          />
+        </TouchableHighlight>
       </View>
     </View>
   );
